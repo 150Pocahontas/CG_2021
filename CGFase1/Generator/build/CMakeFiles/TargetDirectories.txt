@@ -1,0 +1,3 @@
+/home/meriam/Desktop/CG/CGFase1/Generator/build/CMakeFiles/rebuild_cache.dir
+/home/meriam/Desktop/CG/CGFase1/Generator/build/CMakeFiles/edit_cache.dir
+/home/meriam/Desktop/CG/CGFase1/Generator/build/CMakeFiles/generator.dir
