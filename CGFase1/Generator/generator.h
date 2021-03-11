@@ -20,6 +20,7 @@ void writePointsFile(string filename, vector<Point> points);
 void wirePlane(float n);
 vector<Point> cone( float raio, float altura, int fatias, int camadas);
 vector<Point> box( float largura, float altura, float comprimento, int d);
+vector<Point> sphere(float raio, int fatias, int camadas);
 vector<Point> plane(float s);
 
 

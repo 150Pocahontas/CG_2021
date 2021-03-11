@@ -498,6 +498,74 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
     return points;
 }
 //draw sphere
+vector<Point> sphere(float raio, int fatias, int camadas) {
+        Point p, p1, p2, p3;
+     vector<Point> points;
+        float a = (2.0f * raio) / (float)camadas; //altura de uma camada
+        float ang1 = 0.0f; //ponto da 
+        float ang2 = 2.0f * M_PI / (float)fatias;
+        float oy, or1, or2 ;
+        int i, j;
+
+        glBegin(GL_TRIANGLES);
+        p.x = p.y = p.z = 0;
+
+        oy = -raio;
+
+        for (i = 0; i < camadas ; i++) {
+
+                or1 = sqrt(raio * raio - oy * oy);
+                or2 = sqrt(raio * raio - (oy + a) * (oy + a));
+
+                for (j = 0; j < fatias; j++) {
+
+                        //azul
+                        glColor3f(0.0f, 0.5f, 1.0f);
+                        p1.x = cos(ang2) * or1;
+                        p1.y = oy;
+                        p1.z = sin(ang2) * or1;
+                        p2.x = cos(ang1) * or2;
+                        p2.y = oy + a;
+                        p2.z = sin(ang1) * or2;
+                        p3.x = cos(ang2) * or2;
+                        p3.y = oy + a;
+                        p3.z = sin(ang2) * or2;
+
+                        points.push_back(p1);
+                        points.push_back(p2);
+                        points.push_back(p3);
+
+
+                        //amarelo
+                        glColor3f(1.0f, 0.75f, 0.0f);
+                        p1.x = cos(ang1) * or1;
+                        p1.y = -oy;
+                        p1.z = sin(ang1) * or1;
+                        p2.x = cos(ang2) * or2;
+                        p2.y = -oy - a;
+                        p2.z = sin(ang2) * or2;
+                        p3.x = cos(ang1) * or2;
+                        p3.y = -oy - a;
+                        p3.z = sin(ang1) * or2;
+                        points.push_back(p1);
+                        points.push_back(p2);
+                        points.push_back(p3);
+
+                        ang1 += 2.0f * M_PI / (float)fatias;
+                        ang2 += 2.0f * M_PI / (float)fatias;
+
+                }
+
+                oy += a;
+
+        }
+
+        glEnd();
+
+        return points;
+
+}
+
 
 //draw plane
 vector<Point> plane(float s) {
@@ -513,7 +581,6 @@ vector<Point> plane(float s) {
     //triangulo amarelo
     glColor3f(1.0f, 0.75f, 0.0f);
     p1.x = n + p.x;
-    cout << p1.z;
     p1.y = p.y;
     p1.z = n + p.z;
     p2.x = n + p.x;
@@ -580,7 +647,7 @@ int main (int argc, char **argv)
         int divisions = atoi(argv[5]);
         file = argv[6];
         points = box(length,width,height,divisions);
-    }/*
+    }
     else if (strcmp("sphere",argv[1]) == 0 && argc == 6)
     {
             float radius = atof(argv[2]);
@@ -588,7 +655,7 @@ int main (int argc, char **argv)
             int layers = atoi(argv[4]);
             file = argv[5];
             points = sphere(radius, slices, layers);
-    }*/
+    }
     else if (strcmp("plane", argv[1]) == 0 && argc == 4)
     {
             float size = atof(argv[2]);
