@@ -1,3 +1,0 @@
-/home/meriam/Desktop/CG/CGFase1/Engine/build/CMakeFiles/rebuild_cache.dir
-/home/meriam/Desktop/CG/CGFase1/Engine/build/CMakeFiles/edit_cache.dir
-/home/meriam/Desktop/CG/CGFase1/Engine/build/CMakeFiles/engine.dir
