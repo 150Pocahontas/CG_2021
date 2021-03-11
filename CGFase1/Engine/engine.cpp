@@ -5,7 +5,7 @@
 using namespace std;
 using namespace tinyxml2;
 
-int readFile(char* filename)
+int readFile(string filename)
 {
 	Point p;
 	string line, token;
@@ -44,16 +44,13 @@ int readFile(char* filename)
 	return 0;
 }
 
-int readXML(char* filename)
+int readXML(string filename)
 {
-	
-
 	XMLDocument doc;
     XMLNode *pRoot;
     XMLElement *element, *listElement;
     string fileDir = "../../files/" + filename;
-    string path = fileDir.c_str();
-    XMLError eResult = doc.LoadFile(path);
+    XMLError eResult = doc.LoadFile(fileDir.c_str());
     
     if (eResult == XML_SUCCESS)
     {
@@ -71,7 +68,7 @@ int readXML(char* filename)
                     string file;
                     file = listElement->Attribute("file");
                     
-                    if (!file.empty() && readPointsFile(file) == -1)
+                    if (!file.empty() && readFile(file) == -1)
                         return -1;
                     
                     listElement = listElement->NextSiblingElement("model");
@@ -115,7 +112,7 @@ switch (k){
 
 void specialKey (int k, int i, int j)
 {
-    (void)a;(void)b;
+    (void)i;(void)j;
     switch (k)
     {
         case GLUT_KEY_UP:

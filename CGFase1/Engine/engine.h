@@ -25,8 +25,9 @@ int line = GL_LINE;
 vector<Point> points;
 float alpha = 0.7f, beta = 0.3f, radius = 10.0f, step = 0.08f;
 
-int readPointsFile(string filename);
-void keyboard (unsigned char k, int i, int j)
+int readFile(string filename);
+int readXML(string filename);
+void keyboard (unsigned char k, int i, int j);
 void specialKey(int k, int i, int j);
 void drawAndColor(void);
 void renderScene(void);
