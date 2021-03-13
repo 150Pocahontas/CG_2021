@@ -553,72 +553,46 @@ vector<Point> plane(float s) {
     return points;
 }
 //draw cilindro 
-/*
-std::vector<Point> cilindro(float x, float y, float z, int s, float h, float r) {
-std::vector<Point> points;
-        Point p p1 p2 p3;
+void cilindro(int s, float h, float r) {
+
         int i;
 
         float ang1;
         float ang2;
 
+        float a = h / 2.0f;
+
         float cor;
 
         glBegin(GL_TRIANGLES);
-        p.x = p.y = p.z =0;
+
         for (i = 0; i < s; i++){
 
                 ang1 = (M_PI * 2.0f / (float)s) * (float)i;
                 ang2 = ang1 + (M_PI * 2.0f / (float)s);
 
-                if (i % 2 == 0) cor = 1.0f; else cor = 0.0f;
-                glColor3f(1.0f, cor, cor);
-                p1.x = sin(ang1)*r + p.x;
-                p1.y = h + p.y;
-                p1.z =cos(ang1)*r + p.z;
-                glColor3f(0.5f, 0.5f*cor, 0.5f*cor);
-                p2.x = sin(ang2)*r + p.x;
-                p2.y = p.y;
-                p2.z = cos(ang2)*r + p.z;
-                glColor3f(1.0f, cor, cor);
-                p3.x =sin(ang2)*r + p.x;
-                p3.y = h + p.y;
-                p3.z = cos(ang2)*r + p.z;
+                glVertex3f(sin(ang1)*r, a, cos(ang1)*r);
+                glVertex3f(sin(ang2) * r, -a, cos(ang2) * r);
+                glVertex3f(sin(ang2)*r , a, cos(ang2)*r);
 
-                glColor3f(0.5f, 0.5f * cor, 0.5f * cor);
-                p1.x = sin(ang1)*r + p.x;
-                p1.y = p.y;
-                p1.z = cos(ang1)*r + p.z;
-                p2.x = sin(ang2)*r + p.x;
-                p2.y = p.y;
-                p2.z = cos(ang2)*r + p.z;
-                glColor3f(1.0f, cor, cor);
-                p3.x = sin(ang1)*r + p.x;
-                p3.y = h + p.y;
-                p3.z = cos(ang1)*r + p.z;
+                glVertex3f(sin(ang1)*r, -a, cos(ang1)*r );
+                glVertex3f(sin(ang2)*r , -a, cos(ang2)*r );
+                glVertex3f(sin(ang1)*r, a, cos(ang1)*r);
 
-                glColor3f(1.0f, cor, cor);
-                p1.x = sin(ang1)*r + p.x;
-                p1.y = h + p.y;
-                p1.z = cos(ang1)*r + p.z;
-                p2.x = sin(ang2)*r + p.x;
-                p2.y = h + p.y;
-                p2.z = cos(ang2)*r + p.z;
-                p3.x = p.x;
-                p3.y = h + p.y;
-                p3.z = 0.0f;
+                glVertex3f(sin(ang1)*r , a, cos(ang1)*r );
+                glVertex3f(sin(ang2)*r , a , cos(ang2)*r);
+                glVertex3f(0.0f, a, 0.0f);
 
-                glColor3f(0.5f, 0.5f * cor, 0.5f * cor);
-                glVertex3f(sin(ang2) * r + x, y, cos(ang2) * r + z);
-                glVertex3f(sin(ang1) * r + x, y, cos(ang1) * r + z);
-                glVertex3f(x, y, 0.0f);
-
-        }
+                glVertex3f(sin(ang2) * r, -a, cos(ang2) * r );
+                glVertex3f(sin(ang1) * r, -a, cos(ang1) * r );
+                glVertex3f(0.0f, -a, 0.0f);
+    }
 
         glEnd();
 
 }
-*/
+
+
 
 
 
