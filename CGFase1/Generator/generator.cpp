@@ -16,7 +16,7 @@ vector<Point> points;
 void writePointsFile(string filename, std::vector<Point> points) {
 	ofstream file;
 
-    	string fileDir = "/home/meriam/Desktop/CG/CGFase1/files/" + filename;
+    	string fileDir = "/home/pawinha/Desktop/CGFase1-master/CGFase1/files/" + filename;
 	file.open(fileDir, ios_base::trunc);
 
 	if (!file.is_open()) {
@@ -38,7 +38,11 @@ void writePointsFile(string filename, std::vector<Point> points) {
 }
 
 
+/*o primeiro for é para desenhar a base, isto é, a base é feita em que cada
+iteração do loop desenha um triangulo a partir do ponto de origem e também dos dois
+ pontos localizados pelas variáveis ang1 e ang2.
 
+*/
 // draw cone
 vector<Point> cone( float raio, float altura, int fatias, int camadas) {
     vector<Point> points;
@@ -52,14 +56,14 @@ vector<Point> cone( float raio, float altura, int fatias, int camadas) {
     //alpha
     float ang2 = 2.0f * M_PI / (float)fatias;
 
-    glBegin(GL_TRIANGLES);
+
 
     oy = - (altura / 2.0f);
     rn = raio;
 
     for (i = 0; i < fatias; i++) {
 
-        glColor3f(1.0f, 0.75f, 0.0f);
+
         p1.x = (cos(ang1) + p.x);
         p1.y = oy + p.y;
         p1.z = sin(ang1) + p.z;
@@ -80,30 +84,25 @@ vector<Point> cone( float raio, float altura, int fatias, int camadas) {
     }
 
     for (i = 0; i < camadas; i++) {
-    
+
         for (j = 0; j < fatias; j++) {
 
             if (i != camadas-1) {
-                //amarelo
-                glColor3f(1.0f, 0.75f, 0.0f);
                 p1.x = cos(ang2) * (rn -r) + p.x;
                 p1.y = oy + a + p.y;
                 p1.z = sin(ang2) * (rn -r) + p.z;
-                p2.x = cos(ang2) * rn + p.x; 
+                p2.x = cos(ang2) * rn + p.x;
                 p2.y = oy + p.y ;
                 p2.z = sin(ang2) * rn + p.z;
                 p3.x = cos(ang1) * (rn -r) + p.x;
                 p3.y = oy + a + p.y;
                 p3.z =  sin(ang1) * (rn -r) + p.z;
-           
+
                 points.push_back(p1);
                 points.push_back(p2);
                 points.push_back(p3);
 
             }
-
-            //azuis
-            glColor3f(0.0f, 0.5f, 1.0f);
             p1.x = cos(ang1) * rn + p.x;
             p1.y = oy + p.y;
             p1.z = sin(ang1) * rn + p.z;
@@ -120,7 +119,7 @@ vector<Point> cone( float raio, float altura, int fatias, int camadas) {
             ang1 += (2.0f * M_PI / (float)fatias);
             ang2 += (2.0f * M_PI / (float)fatias);
 
-           
+
         }
 
         oy += a;
@@ -128,14 +127,13 @@ vector<Point> cone( float raio, float altura, int fatias, int camadas) {
 
     }
 
-    glEnd();
     return points;
 
 }
 
 
 //draw box
-vector<Point>  box( float largura, float altura, float comprimento, int d) { 
+vector<Point>  box( float largura, float altura, float comprimento, int d) {
     vector<Point> points;
     Point p, p1, p2, p3;
     float l = largura / (float)d;
@@ -145,7 +143,7 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
     float ox, oy, oz;
     int i, j;
 
-    glBegin(GL_TRIANGLES);
+
     p.x = p.y = p.z = 0;
 
     //fundo
@@ -155,11 +153,9 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
     oz = -comprimento / 2.0f;
 
     for (i = 0; i < d; i++) {
-    
+
         for (j = 0; j < d; j++) {
-            
-            //amarelo
-            glColor3f(1.0f, 0.75f, 0.0f);
+
             p1.x = (p.x + ox + l);
             p1.y = p.y + oy;
             p1.z = p.z + oz + c;
@@ -205,8 +201,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
 
         for (j = 0; j < d; j++) {
 
-            //amarelo
-            glColor3f(1.0f, 0.75f, 0.0f);
             p1.x = (p.x + ox);
             p1.y = p.y + oy;
             p1.z = p.z + oz;
@@ -220,8 +214,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
             points.push_back(p2);
             points.push_back(p3);
 
-            //azul
-            glColor3f(0.0f, 0.5f, 1.0f);
             p1.x = (p.x + ox + l);
             p1.y = p.y + oy;
             p1.z = p.z + oz + c;
@@ -252,8 +244,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
 
         for (j = 0; j < d; j++) {
 
-            //amarelo
-            glColor3f(1.0f, 0.75f, 0.0f);
              p1.x = (p.x + ox + l);
             p1.y = p.y + oy;
             p1.z = p.z + oz;
@@ -267,8 +257,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
             points.push_back(p2);
             points.push_back(p3);
 
-            //azul
-            glColor3f(0.0f, 0.5f, 1.0f);
              p1.x = (p.x + ox);
             p1.y = p.y + oy;
             p1.z = p.z + oz;
@@ -299,8 +287,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
 
         for (j = 0; j < d; j++) {
 
-            //amarelo           
-            glColor3f(1.0f, 0.75f, 0.0f);
              p1.x = (p.x + ox);
             p1.y = p.y + oy;
             p1.z = p.z + oz;
@@ -314,8 +300,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
             points.push_back(p2);
             points.push_back(p3);
 
-            //azul
-            glColor3f(0.0f, 0.5f, 1.0f);
              p1.x = (p.x + ox + l);
             p1.y = p.y + oy;
             p1.z = p.z + oz;
@@ -346,8 +330,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
 
         for (j = 0; j < d; j++) {
 
-            //amarelo
-            glColor3f(1.0f, 0.75f, 0.0f);
             p1.x = (p.x + ox);
             p1.y = p.y + oy;
             p1.z = p.z + oz;
@@ -361,8 +343,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
             points.push_back(p2);
             points.push_back(p3);
 
-            //azul
-            glColor3f(0.0f, 0.5f, 1.0f);
             p1.x = (p.x + ox);
             p1.y = p.y + oy + a;
             p1.z = p.z + oz;
@@ -393,8 +373,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
 
         for (j = 0; j < d; j++) {
 
-            //amarelo
-            glColor3f(1.0f, 0.75f, 0.0f);
             p1.x = (p.x + ox);
             p1.y = p.y + oy;
             p1.z = p.z + oz;
@@ -408,8 +386,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
             points.push_back(p2);
             points.push_back(p3);
 
-            //azul
-            glColor3f(0.0f, 0.5f, 1.0f);
             p1.x = (p.x + ox);
             p1.y = p.y + oy + a;
             p1.z = p.z + oz;
@@ -430,7 +406,6 @@ vector<Point>  box( float largura, float altura, float comprimento, int d) {
         oy += a;
     }
 
-    glEnd();
 
     return points;
 }
@@ -439,12 +414,11 @@ vector<Point> sphere(float raio, int fatias, int camadas) {
         Point p, p1, p2, p3;
      vector<Point> points;
         float a = (2.0f * raio) / (float)camadas; //altura de uma camada
-        float ang1 = 0.0f; //ponto da 
+        float ang1 = 0.0f; //ponto da
         float ang2 = 2.0f * M_PI / (float)fatias;
         float oy, or1, or2 ;
         int i, j;
 
-        glBegin(GL_TRIANGLES);
         p.x = p.y = p.z = 0;
 
         oy = -raio;
@@ -456,8 +430,6 @@ vector<Point> sphere(float raio, int fatias, int camadas) {
 
                 for (j = 0; j < fatias; j++) {
 
-                        //azul
-                        glColor3f(0.0f, 0.5f, 1.0f);
                         p1.x = cos(ang2) * or1;
                         p1.y = oy;
                         p1.z = sin(ang2) * or1;
@@ -473,8 +445,6 @@ vector<Point> sphere(float raio, int fatias, int camadas) {
                         points.push_back(p3);
 
 
-                        //amarelo
-                        glColor3f(1.0f, 0.75f, 0.0f);
                         p1.x = cos(ang1) * or1;
                         p1.y = -oy;
                         p1.z = sin(ang1) * or1;
@@ -497,7 +467,6 @@ vector<Point> sphere(float raio, int fatias, int camadas) {
 
         }
 
-        glEnd();
 
         return points;
 
@@ -511,12 +480,9 @@ vector<Point> plane(float s) {
     float n = s / 2.0f;
 
 
-    glBegin(GL_TRIANGLES);
     p.x = p.y = p.z = 0;
 
 
-    //triangulo amarelo
-    glColor3f(1.0f, 0.75f, 0.0f);
     p1.x = n + p.x;
     p1.y = p.y;
     p1.z = n + p.z;
@@ -530,8 +496,6 @@ vector<Point> plane(float s) {
     points.push_back(p2);
     points.push_back(p3);
 
-    //triangulo azul
-    glColor3f(0.0f, 0.5f, 1.0f);
     p1.x = -n + p.x;
     p1.y = p.y;
     p1.z = n + p.z;
@@ -547,54 +511,94 @@ vector<Point> plane(float s) {
     points.push_back(p1);
     points.push_back(p2);
     points.push_back(p3);
-    
 
-    glEnd();
+
     return points;
 }
-//draw cilindro 
-void cilindro(int s, float h, float r) {
+//draw cilindro
 
+vector<Point> cylinder(int s, float h, float r) {
+	Point p, p1, p2, p3;
+	vector<Point> points;
         int i;
 
         float ang1;
         float ang2;
 
         float a = h / 2.0f;
-
-        float cor;
-
-        glBegin(GL_TRIANGLES);
+  			p.x = p.y = p.z = 0;
 
         for (i = 0; i < s; i++){
 
                 ang1 = (M_PI * 2.0f / (float)s) * (float)i;
                 ang2 = ang1 + (M_PI * 2.0f / (float)s);
 
-                glVertex3f(sin(ang1)*r, a, cos(ang1)*r);
-                glVertex3f(sin(ang2) * r, -a, cos(ang2) * r);
-                glVertex3f(sin(ang2)*r , a, cos(ang2)*r);
+								p1.x = sin(ang1)*r;
+								p1.y = a;
+								p1.z= cos(ang1)*r;
+                p2.x = sin(ang2) * r;
+								p2.y = -a;
+								p2.z = cos(ang2) * r;
+                p3.x = sin(ang2)*r;
+								p3.y = a;
+								p3.z = cos(ang2)*r;
 
-                glVertex3f(sin(ang1)*r, -a, cos(ang1)*r );
-                glVertex3f(sin(ang2)*r , -a, cos(ang2)*r );
-                glVertex3f(sin(ang1)*r, a, cos(ang1)*r);
+								points.push_back(p);
+								points.push_back(p1);
+						    points.push_back(p2);
+						    points.push_back(p3);
 
-                glVertex3f(sin(ang1)*r , a, cos(ang1)*r );
-                glVertex3f(sin(ang2)*r , a , cos(ang2)*r);
-                glVertex3f(0.0f, a, 0.0f);
+								p1.x = sin(ang1)*r;
+								p1.y = -a;
+								p1.z= cos(ang1)*r;
+								p2.x = sin(ang2) * r;
+								p2.y = -a;
+								p2.z = cos(ang2) * r;
+								p3.x = sin(ang1)*r;
+								p3.y = a;
+								p3.z = cos(ang1)*r;
 
-                glVertex3f(sin(ang2) * r, -a, cos(ang2) * r );
-                glVertex3f(sin(ang1) * r, -a, cos(ang1) * r );
-                glVertex3f(0.0f, -a, 0.0f);
+
+					    	points.push_back(p);
+								points.push_back(p1);
+						    points.push_back(p2);
+						    points.push_back(p3);
+
+								p1.x = sin(ang1)*r;
+								p1.y = a;
+								p1.z= cos(ang1)*r;
+								p2.x = sin(ang2) * r;
+								p2.y = a;
+								p2.z = cos(ang2) * r;
+								p3.x = 0.0f;
+								p3.y = a;
+								p3.z = 0.0f;
+
+
+					      points.push_back(p);
+								points.push_back(p1);
+						    points.push_back(p2);
+						    points.push_back(p3);
+
+								p1.x = sin(ang2)*r;
+								p1.y = -a;
+								p1.z= cos(ang2)*r;
+								p2.x = sin(ang1) * r;
+								p2.y = -a;
+								p2.z = cos(ang1) * r;
+								p3.x = 0.0f;
+								p3.y = -a;
+								p3.z = 0.0f;
+
+
+								points.push_back(p);
+								points.push_back(p1);
+						    points.push_back(p2);
+						    points.push_back(p3);
     }
 
-        glEnd();
-
+return points;
 }
-
-
-
-
 
 int main (int argc, char **argv)
 {
@@ -616,12 +620,12 @@ int main (int argc, char **argv)
         file = argv[6];
         points = cone(radius,height,slices,layers);
     }
-     
+
     else if (strcmp("box", argv[1]) == 0 && argc == 7)
     {
         float width = atof(argv[2]);
         float height = atof(argv[3]);
-        float length = atof(argv[4]); 
+        float length = atof(argv[4]);
         int divisions = atoi(argv[5]);
         file = argv[6];
         points = box(length,width,height,divisions);
@@ -640,7 +644,14 @@ int main (int argc, char **argv)
             file = argv[3];
             points = plane(size);
     }
-    else{
+		else if (strcmp("cylinder",argv[1]) == 0 && argc == 5)
+	 {
+		 				int size = atoi(argv[2]);
+						float height = atof(argv[3]);
+						float radius = atof(argv[4]);
+						points = cylinder(size, height, radius);
+	 }
+   else {
         printf("Invalid input!\n");
         return -1;
     }
@@ -648,4 +659,3 @@ int main (int argc, char **argv)
         writePointsFile(file,points);
      return 0;
 }
-

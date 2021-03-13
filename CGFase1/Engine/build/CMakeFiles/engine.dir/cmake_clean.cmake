@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/engine.cpp.o"
   "CMakeFiles/engine.dir/tinyxml2.cpp.o"
-  "engine"
   "engine.pdb"
+  "engine"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -23,12 +23,10 @@ typedef struct point {
 
 int line = GL_LINE;
 vector<Point> points;
-//variáveis de translação
-float px = 0.0f, py= 0.0f, pz= 0.0f;
 //variável para a rotação dos objetos
 float ry = 0.0f;
 //variável para escala
-float scale = 1.0f; 
+float scale = 1.0f;
 float alpha = 0.7f, beta = 0.3f, radius = 10.0f, step = 0.08f;
 
 int readFile(string filename);

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/meriam/Desktop/CG/CGFase1/Engine/engine.cpp" "/home/meriam/Desktop/CG/CGFase1/Engine/build/CMakeFiles/engine.dir/engine.cpp.o"
-  "/home/meriam/Desktop/CG/CGFase1/Engine/tinyxml2.cpp" "/home/meriam/Desktop/CG/CGFase1/Engine/build/CMakeFiles/engine.dir/tinyxml2.cpp.o"
+  "/home/pawinha/Desktop/CGFase1-master/CGFase1/Engine/engine.cpp" "/home/pawinha/Desktop/CGFase1-master/CGFase1/Engine/build/CMakeFiles/engine.dir/engine.cpp.o"
+  "/home/pawinha/Desktop/CGFase1-master/CGFase1/Engine/tinyxml2.cpp" "/home/pawinha/Desktop/CGFase1-master/CGFase1/Engine/build/CMakeFiles/engine.dir/tinyxml2.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -38,7 +38,7 @@ int readFile(string filename)
 				points.push_back(p);
 			}
 		}
-		points.pop_back(); 
+		points.pop_back();
 		file.close();
 	}
 	return 0;
@@ -49,28 +49,28 @@ int readXML(string filename)
 	XMLDocument doc;
     XMLNode *pRoot;
     XMLElement *element, *listElement;
-    string fileDir = "/home/meriam/Desktop/CG/CGFase1/files/" + filename;
+    string fileDir = "/home/pawinha/Desktop/CGFase1-master/CGFase1/files/" + filename;
     XMLError eResult = doc.LoadFile(fileDir.c_str());
-    
+
     if (eResult == XML_SUCCESS)
     {
         pRoot = doc.FirstChild();
         if (pRoot != nullptr)
         {
             element = pRoot->FirstChildElement("models");
-            
+
             if (element != nullptr)
             {
                 listElement = element->FirstChildElement("model");
-                
+
                 while (listElement != nullptr)
                 {
                     string file;
                     file = listElement->Attribute("file");
-                    
+
                     if (!file.empty() && readFile(file) == -1)
                         return -1;
-                    
+
                     listElement = listElement->NextSiblingElement("model");
                 }
             }
@@ -87,70 +87,16 @@ void keyboard (unsigned char k, int i, int j){
 switch (k){
 
         case 'r':
-               // px = 0.0f;
-                //py = 0.0f;
-                //pz = 0.0f;
-                //ry = 0.0f;
                 alpha = 0.7f;
                 beta = 0.3f;
                 step = 0.08f;
-                //scale =1.0f;
-                glutPostRedisplay();
-                break;/*
-        //alteração da rotação do objeto em si
-        case 't':
-                ry+= 5.0f ;
                 glutPostRedisplay();
                 break;
-
-        case 'y': 
-                ry-= 5.0f ;
-                glutPostRedisplay();
-                break;       
-        case 'g' :
-                scale += 0.1f;
-                glutPostRedisplay();
-                break;
-        case 'h' :
-                scale -= 0.1f;
-                if (scale < 0) scale = 0.0f;
-                glutPostRedisplay();
-                break;
-
-        case 'a':
-                px -= 0.1f;
-                glutPostRedisplay();
-                break;
-
-        case 'd':
-                px += 0.1f;
-                glutPostRedisplay();
-                break;
-
-        case 's':
-                pz += 0.1f;
-                glutPostRedisplay();
-                break;
-
-        case 'w':
-                pz -= 0.1f;
-                glutPostRedisplay();
-                break;
-
-        case 'e':
-                py += 0.1f;
-                glutPostRedisplay();
-                break;
-
-        case 'q':
-                py -= 0.1f;
-                glutPostRedisplay();
-                break;*/
 
 
 
     //zoom
-    case 'p':
+    case 'i':
             radius += step;
             glutPostRedisplay();
             break;
@@ -159,20 +105,20 @@ switch (k){
             glutPostRedisplay();
             break;
 
-     //draw mode   
-     //points    
-	case 'z':
+     //draw mode
+     //points
+	case 'p':
             line = GL_POINT;
             glutPostRedisplay();
             break;
-    //lines        
-    case 'x':
+    //lines
+    case 'l':
             line = GL_LINE;
             glutPostRedisplay();
             break;
 
-    //full        
-    case 'c':
+    //full
+    case 'f':
             line = GL_FILL;
             glutPostRedisplay();
             break;
@@ -207,7 +153,7 @@ void specialKey (int k, int i, int j)
             alpha += step;
             glutPostRedisplay();
             break;
-	       
+
         default:
             break;
     }
@@ -282,13 +228,13 @@ void drawAndColor(void) {
     glBegin(GL_TRIANGLES);
     int i=0;
     bool cor = true;
-    
+
     for (const Point pt : points)  {
         if( i==3 ) {
             cor = !cor;
             i=0;
         }
-        
+
         if(cor) {
             glColor3f(1, 0.75, 0);
             glVertex3f(pt.x, pt.y, pt.z);
@@ -314,18 +260,12 @@ void renderScene(void)
     gluLookAt(radius*cos(beta)*sin(alpha), radius*sin(beta), radius*cos(beta)*cos(alpha),
               0.0, 0.0, 0.0,
               0.0f, 1.0f, 0.0f);
-    
+
     glPolygonMode(GL_FRONT_AND_BACK, line);
 
     //axes
-    //wirePlane(2.0f);
+    wirePlane(2.0f);
 
-    //transformations
-    glTranslatef(px, py, pz);
-
-    //rotação em função do eixo y do próprio objeto
-    //glRotatef(ry, 0.0f, 1.0f, 0.0f);
-    //glScalef (scale, scale, scale);
     //set primitives and colors
     drawAndColor();
 
