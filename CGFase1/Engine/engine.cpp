@@ -87,18 +87,17 @@ void keyboard (unsigned char k, int i, int j){
 switch (k){
 
         case 'r':
-                px = 0.0f;
-                py = 0.0f;
-                pz = 0.0f;
-                ry = 0.0f;
+               // px = 0.0f;
+                //py = 0.0f;
+                //pz = 0.0f;
+                //ry = 0.0f;
                 alpha = 0.7f;
                 beta = 0.3f;
                 step = 0.08f;
-                scale =1.0f;
+                //scale =1.0f;
                 glutPostRedisplay();
-                break;
-
-        //alteração da rotação do objetoem si
+                break;/*
+        //alteração da rotação do objeto em si
         case 't':
                 ry+= 5.0f ;
                 glutPostRedisplay();
@@ -146,7 +145,7 @@ switch (k){
         case 'q':
                 py -= 0.1f;
                 glutPostRedisplay();
-                break;
+                break;*/
 
 
 
@@ -311,20 +310,22 @@ void renderScene(void)
 
     // set the camera
     glLoadIdentity();
+
     gluLookAt(radius*cos(beta)*sin(alpha), radius*sin(beta), radius*cos(beta)*cos(alpha),
               0.0, 0.0, 0.0,
               0.0f, 1.0f, 0.0f);
+    
     glPolygonMode(GL_FRONT_AND_BACK, line);
 
     //axes
-    wirePlane(2.0f);
+    //wirePlane(2.0f);
 
     //transformations
     glTranslatef(px, py, pz);
 
     //rotação em função do eixo y do próprio objeto
-    glRotatef(ry, 0.0f, 1.0f, 0.0f);
-    glScalef (scale, scale, scale);
+    //glRotatef(ry, 0.0f, 1.0f, 0.0f);
+    //glScalef (scale, scale, scale);
     //set primitives and colors
     drawAndColor();
 
@@ -383,18 +384,31 @@ void mouvementguide(){
     std::cout << "             Rotate the camera down ( Y Axe - Negative Direction)     " <<std::endl;
     std::cout << "                                                                      " <<std::endl;
     std::cout << "                               ZOOM:                                  " <<std::endl;
-    std::cout << "- m :                                                                 " <<std::endl;
+    std::cout << "- o :                                                                 " <<std::endl;
     std::cout << "      Zoom in                                                         " <<std::endl;
     std::cout << "                                                                      " <<std::endl;
-    std::cout << "- a :                                                                 " <<std::endl;
+    std::cout << "- p :                                                                 " <<std::endl;
     std::cout << "      Zoom out                                                        " <<std::endl;
+    std::cout << "                               Postion:                               " <<std::endl;
+    std::cout << "- d :                                                                 " <<std::endl;
+    std::cout << "      step to the right                                               " <<std::endl;
+    std::cout << "- s :                                                                 " <<std::endl;
+    std::cout << "      step back                                                       " <<std::endl;
+    std::cout << "- w :                                                                 " <<std::endl;
+    std::cout << "      step to the front                                               " <<std::endl;
+    std::cout << "- a :                                                                 " <<std::endl;
+    std::cout << "      step to the left                                                " <<std::endl;
+    std::cout << "- q :                                                                 " <<std::endl;
+    std::cout << "      step down                                                       " <<std::endl;
+    std::cout << "- e :                                                                 " <<std::endl;
+    std::cout << "      step up                                                         " <<std::endl;
     std::cout << "                                                                      " <<std::endl;
     std::cout << "                              FORMAT:                                 " <<std::endl;
-    std::cout << "- l :                                                                 " <<std::endl;
+    std::cout << "- x :                                                                 " <<std::endl;
     std::cout << "     Figure format into lines                                         " <<std::endl;
-    std::cout << "- p :                                                                 " <<std::endl;
+    std::cout << "- z :                                                                 " <<std::endl;
     std::cout << "     Figure format into points                                        " <<std::endl;
-    std::cout << "- f :                                                                 " <<std::endl;
+    std::cout << "- c :                                                                 " <<std::endl;
     std::cout << "     Fill up the figure                                               " <<std::endl;
     std::cout << "                                                                      " <<std::endl;
     std::cout << "                              || END ||                               " <<std::endl;
