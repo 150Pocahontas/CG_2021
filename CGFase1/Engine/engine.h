@@ -15,14 +15,8 @@
 
 using namespace std;
 
-typedef struct point {
-	float x;
-	float y;
-	float z;
-}Point;
-
 int line = GL_LINE;
-vector<Point> points;
+
 float alpha = 0.7f, beta = 0.3f, radius = 10.0f, step = 0.08f;
 
 int readFile(string filename);
