@@ -1,0 +1,22 @@
+<scene>
+      <group>
+            <!-- Sistema Solar -->
+            <group>
+                  <!-- Sol -->
+                  <scale X="3.6" Y="3.6" Z="3.6" /> 
+		  <colour R="1" G="0.55" B="0.0" /> 
+                  <models>
+                        <model file="sphere.3d" />
+                  </models>
+            </group>
+            <group>
+                  <!-- Mercurio -->
+                  <translate X="-10" Z="20" />
+                  <scale X="0.24" Y="0.24" Z="0.24" />  
+		  <colour R="0.2" G="0.2" B="0.2" />
+                  <models>
+                        <model file="sphere.3d" />
+                  </models>
+            </group>
+      </group>
+</scene>
