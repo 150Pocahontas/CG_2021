@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/meriam/Desktop/CG/CGFase2/Engine
+CMAKE_SOURCE_DIR = /home/patricia/CGFase2/Engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/meriam/Desktop/CG/CGFase2/Engine/build
+CMAKE_BINARY_DIR = /home/patricia/CGFase2/Engine/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/engine.dir/depend.make
@@ -59,42 +59,42 @@ include CMakeFiles/engine.dir/flags.make
 
 CMakeFiles/engine.dir/engine.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/engine.cpp.o: ../engine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meriam/Desktop/CG/CGFase2/Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/engine.dir/engine.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/engine.cpp.o -c /home/meriam/Desktop/CG/CGFase2/Engine/engine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/patricia/CGFase2/Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/engine.dir/engine.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/engine.cpp.o -c /home/patricia/CGFase2/Engine/engine.cpp
 
 CMakeFiles/engine.dir/engine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/engine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/meriam/Desktop/CG/CGFase2/Engine/engine.cpp > CMakeFiles/engine.dir/engine.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/patricia/CGFase2/Engine/engine.cpp > CMakeFiles/engine.dir/engine.cpp.i
 
 CMakeFiles/engine.dir/engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/engine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/meriam/Desktop/CG/CGFase2/Engine/engine.cpp -o CMakeFiles/engine.dir/engine.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/patricia/CGFase2/Engine/engine.cpp -o CMakeFiles/engine.dir/engine.cpp.s
 
 CMakeFiles/engine.dir/tinyxml2.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/tinyxml2.cpp.o: ../tinyxml2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meriam/Desktop/CG/CGFase2/Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/engine.dir/tinyxml2.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/tinyxml2.cpp.o -c /home/meriam/Desktop/CG/CGFase2/Engine/tinyxml2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/patricia/CGFase2/Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/engine.dir/tinyxml2.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/tinyxml2.cpp.o -c /home/patricia/CGFase2/Engine/tinyxml2.cpp
 
 CMakeFiles/engine.dir/tinyxml2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/tinyxml2.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/meriam/Desktop/CG/CGFase2/Engine/tinyxml2.cpp > CMakeFiles/engine.dir/tinyxml2.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/patricia/CGFase2/Engine/tinyxml2.cpp > CMakeFiles/engine.dir/tinyxml2.cpp.i
 
 CMakeFiles/engine.dir/tinyxml2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/tinyxml2.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/meriam/Desktop/CG/CGFase2/Engine/tinyxml2.cpp -o CMakeFiles/engine.dir/tinyxml2.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/patricia/CGFase2/Engine/tinyxml2.cpp -o CMakeFiles/engine.dir/tinyxml2.cpp.s
 
 CMakeFiles/engine.dir/geoTransforms.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/geoTransforms.cpp.o: ../geoTransforms.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meriam/Desktop/CG/CGFase2/Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/engine.dir/geoTransforms.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/geoTransforms.cpp.o -c /home/meriam/Desktop/CG/CGFase2/Engine/geoTransforms.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/patricia/CGFase2/Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/engine.dir/geoTransforms.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/geoTransforms.cpp.o -c /home/patricia/CGFase2/Engine/geoTransforms.cpp
 
 CMakeFiles/engine.dir/geoTransforms.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/geoTransforms.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/meriam/Desktop/CG/CGFase2/Engine/geoTransforms.cpp > CMakeFiles/engine.dir/geoTransforms.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/patricia/CGFase2/Engine/geoTransforms.cpp > CMakeFiles/engine.dir/geoTransforms.cpp.i
 
 CMakeFiles/engine.dir/geoTransforms.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/geoTransforms.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/meriam/Desktop/CG/CGFase2/Engine/geoTransforms.cpp -o CMakeFiles/engine.dir/geoTransforms.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/patricia/CGFase2/Engine/geoTransforms.cpp -o CMakeFiles/engine.dir/geoTransforms.cpp.s
 
 # Object files for target engine
 engine_OBJECTS = \
@@ -112,10 +112,8 @@ engine: CMakeFiles/engine.dir/build.make
 engine: /usr/lib/x86_64-linux-gnu/libGL.so
 engine: /usr/lib/x86_64-linux-gnu/libGLU.so
 engine: /usr/lib/x86_64-linux-gnu/libglut.so
-engine: /usr/lib/x86_64-linux-gnu/libXmu.so
-engine: /usr/lib/x86_64-linux-gnu/libXi.so
 engine: CMakeFiles/engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/meriam/Desktop/CG/CGFase2/Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/patricia/CGFase2/Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable engine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -128,6 +126,6 @@ CMakeFiles/engine.dir/clean:
 .PHONY : CMakeFiles/engine.dir/clean
 
 CMakeFiles/engine.dir/depend:
-	cd /home/meriam/Desktop/CG/CGFase2/Engine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/meriam/Desktop/CG/CGFase2/Engine /home/meriam/Desktop/CG/CGFase2/Engine /home/meriam/Desktop/CG/CGFase2/Engine/build /home/meriam/Desktop/CG/CGFase2/Engine/build /home/meriam/Desktop/CG/CGFase2/Engine/build/CMakeFiles/engine.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/patricia/CGFase2/Engine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/patricia/CGFase2/Engine /home/patricia/CGFase2/Engine /home/patricia/CGFase2/Engine/build /home/patricia/CGFase2/Engine/build /home/patricia/CGFase2/Engine/build/CMakeFiles/engine.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/engine.dir/depend
 

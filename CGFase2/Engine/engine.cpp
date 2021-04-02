@@ -41,6 +41,32 @@ int readFile(string filename, vector<Point*> *points)
     return 0;
 }
 
+Group* readXML(string filename, vector<Point*> *points)
+{
+    Group* group = nullptr;
+    XMLDocument doc;
+    XMLNode *pRoot;
+    XMLElement *element;
+    string fileDir = "../files/" + filename;
+    XMLError eResult = doc.LoadFile(fileDir.c_str());
+
+    if (eResult == XML_SUCCESS)
+    {
+        pRoot = doc.FirstChild();
+        if (pRoot != nullptr)
+        {
+            group = new Group();
+            element = pRoot->FirstChildElement("group");
+            readGroup(group,element, points,0);
+        }
+    }
+    else
+    {
+        cout << "Unable to open file: " << filename << "." << endl;
+    }
+    return group;
+}
+
 void readRotate (Group* group, XMLElement* element){
     float angle = 0;
     float x = 0;
@@ -186,34 +212,10 @@ void readGroup (Group *group, XMLElement *gElement, vector<Point*> *orbits, int 
             readGroup(child,element,orbits,d+1);
         }
 
-        element = element->NextSiblingElement();
+        element = gElement->NextSiblingElement();
     }
 }
-Group* readXML(string filename, vector<Point*> *points)
-{
-    Group* group = nullptr;
-    XMLDocument doc;
-    XMLNode *pRoot;
-    XMLElement *element;
-    string fileDir = "../files/" + filename;
-    XMLError eResult = doc.LoadFile(fileDir.c_str());
 
-    if (eResult == XML_SUCCESS)
-    {
-        pRoot = doc.FirstChild();
-        if (pRoot != nullptr)
-        {
-            group = new Group();
-            element = pRoot->FirstChildElement("group");
-            readGroup(group,element, points,0);
-        }
-    }
-    else
-    {
-        cout << "Unable to open file: " << filename << "." << endl;
-    }
-    return group;
-}
 /*
 void wirePlane(float n) {
 
@@ -279,15 +281,15 @@ void wirePlane(float n) {
 
     glEnd();
 }
-
+*/
 void drawScene(Group* scene){
     glPushMatrix();
+    glBegin(GL_TRIANGLES);
     glColor3f(0.5f, 0.5f, 1.0f);
     for (Transformation *t : scene ->getTrans())
     {
         t->apply();
     }
-    glBegin(GL_TRIANGLES);
     for (Shape *shape : scene->getShapes()){
 
         for (Point *p : shape->getPoints())
@@ -297,49 +299,11 @@ void drawScene(Group* scene){
 
     for (Group *g : scene->getGroups())
         drawScene(g);
-    glPopMatrix();
-}cd
-*/
-
-void drawScene(Group* scene){
-    glPushMatrix();
-    const char* type;
-    glColor3f(0.5f, 0.5f, 1.0f);
-    for (Transformation *t: scene->getTrans()){
-        type = t->getType().c_str();
-        if(!strcmp(type,"translation")) {
-            glTranslatef(t->getX(), t->getY(), t->getZ());
-        }
-
-
-        else if(!strcmp(type, "rotation")) {
-            glRotatef(t->getAngle(),
-                      t->getX(),
-                      t->getY(),
-                      t->getZ());
-        }
-
-        else if(!strcmp(type,"scale")) {
-            glScalef(t->getX(), t->getY(), t->getZ());
-        }
-    else if(!strcmp(type,"colour")) {
-            glColor3f(t->getX(), t->getY(), t->getZ());
-        }
-    }
-
-    glBegin(GL_TRIANGLES);
-    for (Shape *shape : scene->getShapes()){
-
-        for (Point *p : shape->getPoints())
-            glVertex3f(p->getX(), p->getY(), p->getZ());
-    }
-    glEnd();
-
-    for (Group *g : scene->getGroups())
-        drawScene(g);
-
     glPopMatrix();
 }
+
+
+
 
 void drawOrbits()
 {
