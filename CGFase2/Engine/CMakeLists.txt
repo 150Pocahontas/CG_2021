@@ -5,7 +5,7 @@ PROJECT(engine)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-add_executable(${PROJECT_NAME} engine.cpp engine.h tinyxml2.cpp tinyxml2.h geoTransform.cpp geoTransform.h)
+add_executable(${PROJECT_NAME} engine.cpp engine.h tinyxml2.cpp tinyxml2.h geoTransforms.cpp geoTransforms.h)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})
@@ -44,3 +44,5 @@ else (WIN32) #Linux and Mac
 	endif(NOT GLUT_FOUND)
 	
 endif(WIN32)
+
+

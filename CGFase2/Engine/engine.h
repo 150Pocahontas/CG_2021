@@ -19,7 +19,9 @@ using namespace std;
 int line = GL_LINE;
 Group *scene;
 vector<Point*> orbits;
-void readRotate (Group* group, XMLElement* element);
+float alpha = 0.7f, beta = 0.3f, radius = 10.0f, step = 0.08f;
+
+/*void readRotate (Group* group, XMLElement* element);
 void readTranslate (Group *group, XMLElement *element, vector<Point*> *orbits, int d);
 void readScale (Group *group, XMLElement *element);
 void readColour (Group *group, XMLElement *element);
@@ -28,8 +30,9 @@ void readGroup (Group *group, XMLElement *gElement, vector<Point*> *orbits, int 
 void drawScene(Group* scene);
 
 int readFile(string filename);
-int readXML(string filename);
+int readXML(string filename);*/
 //void wirePlane(float n);
+
 void renderScene(void);
 void keyboard (unsigned char k, int i, int j);
 void specialKey (int k, int i, int j);

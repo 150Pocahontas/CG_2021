@@ -1,5 +1,10 @@
 #ifndef ENGINE_GEOTRANSFORM_H
 #define ENGINE_GEOTRANSFORM_H
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
 #include <math.h>
 #include <string>
 #include <iostream>
@@ -42,25 +47,18 @@ class Transformation {
         Transformation();
         Transformation(string t, float a, float xx, float yy, float zz);
         string getType();
-        void setType(const string type);
+        void setType( string type);
         float getX();
         void setX(float x);
         float getY();
         void setY(float y);
         float getZ();
         void setZ(float z);
+        float getAngle();
+        void setAngle(float angle);
+        void apply();
 };
-class Rotate : public Transformation
-{
-private:
-    float angle;
-public:
-    Rotate();
-    float getAngle() const;
-    void setAngle(float angle);
-    void apply();
-    
-};
+/*
 class Tipo : public Transformation{
 private :
     string tipo;
@@ -69,7 +67,7 @@ public:
     void apply(int *linha);
      void setTipo(const string type);
 };
-
+*/
 class Group {
     private:
         vector<Group*> groups;

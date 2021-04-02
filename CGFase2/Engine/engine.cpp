@@ -5,6 +5,41 @@
 
 using namespace std;
 using namespace tinyxml2;
+int readFile(string filename, vector<Point*> *points)
+{
+    string line, token;
+    ifstream file(filename);
+    int i, j=0;
+    vector<float> tokens;
+
+    if (!file.is_open()) {
+        cout << "Unable to open file: " << filename << "." << endl; 
+        return -1;
+    }
+    else
+    {
+        while (!file.eof())
+        {
+            getline(file, line);
+            stringstream ss(line.c_str());
+
+            if (line.c_str() != NULL)
+            {
+                i = 0;
+                while (i<3 && getline(ss, token, ','))
+                {
+                    tokens.push_back(stof(token));
+                    i++;
+                }
+                Point *p = new Point (token[j++], tokens[j++], tokens[j++]);
+                points->push_back(p);
+            }
+        }
+        points->pop_back();
+        file.close();
+    }
+    return 0;
+}
 
 void readRotate (Group* group, XMLElement* element){
     float angle = 0;
@@ -12,7 +47,7 @@ void readRotate (Group* group, XMLElement* element){
     float y = 0;
     float z = 0;
     string type = "rotation";
-    Rotate *r = new Rotate();
+    Transformation *t;
     if (element-> Attribute("angle"))
       angle = stof(element->Attribute("angle"));
 
@@ -25,18 +60,15 @@ void readRotate (Group* group, XMLElement* element){
     if (element-> Attribute("Z"))
       z = stof(element->Attribute("z"));     
 
-    r->setX(x);
-    r->setY(y);
-    r->setZ(z);
-    r->setAngle(angle);
-    r->setType("rotate");
-    group->addTransformation(r);
+    t = new Transformation(type,angle,x,y,z);
+    group->addTransformation(t);
 }
 
 void readTranslate (Group *group, XMLElement *element, vector<Point*> *orbits, int d)
 {
     float x=0, y=0, z=0;
-    Transformation *t = new Transformation();
+    string type = "translation";
+    Transformation *t;
 
     if(element->Attribute("X"))
         x = stof(element->Attribute("X"));
@@ -47,10 +79,7 @@ void readTranslate (Group *group, XMLElement *element, vector<Point*> *orbits, i
     if(element->Attribute("Z"))
         z = stof(element->Attribute("Z"));
 
-    t->setX(x);
-    t->setY(y);
-    t->setZ(z);
-    t->setType("translate");
+    t = new Transformation(type,0,x,y,z);
     group->addTransformation(t);
 
     if (d == 0 || d == 1)
@@ -62,7 +91,8 @@ void readTranslate (Group *group, XMLElement *element, vector<Point*> *orbits, i
 
 void readScale (Group *group, XMLElement *element){
     float x=1, y=1, z=1;
-    Transformation *t = new Transformation();
+    string type = "scale";
+    Transformation *t;
 
     if(element->Attribute("X"))
         x = stof(element->Attribute("X"));
@@ -73,16 +103,14 @@ void readScale (Group *group, XMLElement *element){
     if(element->Attribute("Z"))
         z = stof(element->Attribute("Z"));
 
-    t->setX(x);
-    t->setY(y);
-    t->setZ(z);
-    t->setType("scale");
+    t = new Transformation(type,0,x,y,z);
     group->addTransformation(t);
 }
 
 void readColour (Group *group, XMLElement *element){
     float x=1, y=1, z=1;
-    Transformation *t = new Transformation();
+    string type = "colour";
+    Transformation *t;
 
     if(element->Attribute("R"))
         x = stof(element->Attribute("R"));
@@ -93,13 +121,9 @@ void readColour (Group *group, XMLElement *element){
     if(element->Attribute("B"))
         z = stof(element->Attribute("B"));
 
-    t->setX(x);
-    t->setY(y);
-    t->setZ(z);
-    t->setType("colour");
+    t = new Transformation(type,0,x,y,z);
     group->addTransformation(t);
 }
-
 
 
 void readModels (Group *group, XMLElement *element) {
@@ -165,6 +189,31 @@ void readGroup (Group *group, XMLElement *gElement, vector<Point*> *orbits, int 
         element = element->NextSiblingElement();
     }
 }
+Group* readXML(string filename, vector<Point*> *points)
+{
+    Group* group = nullptr;
+    XMLDocument doc;
+    XMLNode *pRoot;
+    XMLElement *element;
+    string fileDir = "../files/" + filename;
+    XMLError eResult = doc.LoadFile(fileDir.c_str());
+
+    if (eResult == XML_SUCCESS)
+    {
+        pRoot = doc.FirstChild();
+        if (pRoot != nullptr)
+        {
+            group = new Group();
+            element = pRoot->FirstChildElement("group");
+            readGroup(group,element, points,0);
+        }
+    }
+    else
+    {
+        cout << "Unable to open file: " << filename << "." << endl;
+    }
+    return group;
+}
 /*
 void wirePlane(float n) {
 
@@ -229,103 +278,86 @@ void wirePlane(float n) {
     glVertex3f(0.0f, -2.0f * n, 0.0f);
 
     glEnd();
-}*/
+}
 
 void drawScene(Group* scene){
     glPushMatrix();
-    vector<Transformation*> trans = scene->getTrans();
-    for (int i = 0; i < trans.size(); i++)
-    {   //at(i) can be used to extract 
-        //characters by characters from a given string.
-        Transformation* tr = trans.at(i);
-        if (Tipo* t = dynamic_cast<Tipo*>(tr))
-         {
-             t->apply(&linha);
-             glPolygonMode(GL_FRONT,linha);
-         } 
-         else {
-            tr->apply();
-         }
-    }
-    vector<Shape*> shapes = scene->getShapes();
-    for (int k = 0; k < shapes.size(); k++)
+    glColor3f(0.5f, 0.5f, 1.0f);
+    for (Transformation *t : scene ->getTrans())
     {
-        int points =shapes.at(k)->getSize();
-        glBegin(GL_TRIANGLES);
-        for (int j = 0; j < points; j++)
-        {
-            Point* p = shapes.at(k)->getPoints(j);
-            float x = p->getX();
-            float y = p->getY();
-            float z = p->getZ();
-            glVertex3f(x,y,z);
-        }
-        glEnd();
+        t->apply();
     }
+    glBegin(GL_TRIANGLES);
+    for (Shape *shape : scene->getShapes()){
+
+        for (Point *p : shape->getPoints())
+            glVertex3f(p->getX(), p->getY(), p->getZ());
+    }
+    glEnd();
+
+    for (Group *g : scene->getGroups())
+        drawScene(g);
+    glPopMatrix();
+}cd
+*/
+
+void drawScene(Group* scene){
+    glPushMatrix();
+    const char* type;
+    glColor3f(0.5f, 0.5f, 1.0f);
+    for (Transformation *t: scene->getTrans()){
+        type = t->getType().c_str();
+        if(!strcmp(type,"translation")) {
+            glTranslatef(t->getX(), t->getY(), t->getZ());
+        }
+
+
+        else if(!strcmp(type, "rotation")) {
+            glRotatef(t->getAngle(),
+                      t->getX(),
+                      t->getY(),
+                      t->getZ());
+        }
+
+        else if(!strcmp(type,"scale")) {
+            glScalef(t->getX(), t->getY(), t->getZ());
+        }
+    else if(!strcmp(type,"colour")) {
+            glColor3f(t->getX(), t->getY(), t->getZ());
+        }
+    }
+
+    glBegin(GL_TRIANGLES);
+    for (Shape *shape : scene->getShapes()){
+
+        for (Point *p : shape->getPoints())
+            glVertex3f(p->getX(), p->getY(), p->getZ());
+    }
+    glEnd();
+
+    for (Group *g : scene->getGroups())
+        drawScene(g);
+
     glPopMatrix();
 }
 
-int readFile(string filename, vector<Point*> *points)
+void drawOrbits()
 {
-    string line, token;
-    ifstream file(filename);
-    int i, j=0;
-    vector<float> tokens;
+    glColor3f(1.0f, 1.0f, 0.94f);
 
-    if (!file.is_open()) {
-        cout << "Unable to open file: " << filename << "." << endl; 
-        return -1;
-    }
-    else
-    {
-        while (!file.eof())
+    for(auto const& p : orbits){
+        glBegin(GL_POINTS);
+        for (int j = 0 ; j < 200 ; j++)
         {
-            getline(file, line);
-            stringstream ss(line.c_str());
-
-            if (line.c_str() != NULL)
-            {
-                i = 0;
-                while (i<3 && getline(ss, token, ','))
-                {
-                    tokens.push_back(stof(token));
-                    i++;
-                }
-                Point *p = new Point (token[j++], tokens[j++], tokens[j++]);
-                points->push_back(p);
-            }
+            float x = p->getX() * p->getX();
+            float y = p->getY() * p->getY();
+            float z = p->getZ() * p->getZ();
+            float radius = sqrtf(x + y + z);
+            float alpha = j * 2 * M_PI / 200;
+            glVertex3f(radius * cos(alpha), 0, radius * sin(alpha));
         }
-        points->pop_back();
-        file.close();
+        glEnd();
     }
-    return 0;
-}
-
-int readXML(string filename, vector<Point*> *points)
-{
-    Group* group = nullptr;
-    XMLDocument doc;
-    XMLNode *pRoot;
-    XMLElement *element;
-    string fileDir = "../files/" + filename;
-    XMLError eResult = doc.LoadFile(fileDir.c_str());
-
-    if (eResult == XML_SUCCESS)
-    {
-        pRoot = doc.FirstChild();
-        if (pRoot != nullptr)
-        {
-            group = new Group();
-            element = pRoot->FirstChildElement("group");
-            readGroup(group,element, points,0);
-        }
-    }
-    else
-    {
-        cout << "Unable to open file: " << filename << "." << endl;
-        return -1;
-    }
-    return group;
 }
 
 void renderScene(void)
@@ -344,14 +376,12 @@ void renderScene(void)
     glPolygonMode(GL_FRONT_AND_BACK, line);
 
     //axes
-    wirePlane(2.0f);
+   // wirePlane(2.0f);
 
     //set primitives and colors
-    for (int i = 0; i < scene.size(); i++)
-    {
-        drawScene(scene.at(i));
-    }
-
+    
+        drawScene(scene);
+        drawOrbits();
 
     // End of frame
     glutSwapBuffers();
@@ -501,6 +531,12 @@ void mouvementguide(){
 
 int main(int argc, char **argv)
 {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+    glutInitWindowPosition(100,100);
+    glutInitWindowSize(800,800);
+    glutCreateWindow("SOLAR SYSTEM");
+
     if (argc < 2) {
         cout << "Invalid input." << endl;
         return 0;
@@ -509,15 +545,10 @@ int main(int argc, char **argv)
             mouvementguide();
             return 0;
         }
-    Shape s = Shape();  
     scene = readXML(argv[1],&orbits);
     if(scene == nullptr) return 0;  
     // put GLUT init here
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowPosition(100,100);
-    glutInitWindowSize(800,800);
-    glutCreateWindow("SOLAR SYSTEM");
+    
     glEnableClientState(GL_VERTEX_ARRAY);
     glClearColor(0,0,0,0) ;
     glClear(GL_COLOR_BUFFER_BIT);
@@ -525,7 +556,7 @@ int main(int argc, char **argv)
 		glutDisplayFunc(renderScene);
 		glutReshapeFunc(changeSize);
 		glutIdleFunc(renderScene);
-        glutKeyboarFunc(keyboard);
+        glutKeyboardFunc(keyboard);
         glutSpecialFunc(specialKey);
 	
 

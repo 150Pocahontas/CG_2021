@@ -2,7 +2,7 @@
  * @file geoTransform.cpp
  * @brief Ficheiro que contém a API relativa às estruturas de transformações geométricas..
  */
-#include "geoTransform.h"
+#include "geoTransforms.h"
 
 Point::Point(){
 	x = 0; y = 0; z = 0;
@@ -44,7 +44,8 @@ int Shape::getSize(){
 Transformation :: Transformation(){
 }
 
-Transformation ::Transformation(string t, float xx, float yy, float zz) {
+Transformation ::Transformation(string t, float a, float xx, float yy, float zz) {
+    angle = a;
     type = t;   
     x = xx;
     y = yy;
@@ -73,16 +74,25 @@ void Transformation::setZ(float z) {
 }
 
 //
-const string Transformation :: getType() {
+string Transformation :: getType() {
     return type;
 }
 void Transformation::setType(string type) {
     Transformation::type = type;
 }
+float Transformation :: getAngle() {
+    return angle;
+}
+void Transformation::setAngle(float angle) {
+    Transformation::angle = angle;
+}
 
 void Transformation::apply(){
    if(type == "translate"){
        glTranslatef(x,y,z);
+   }
+   else if(type == "rotate"){
+       glRotatef(angle,x,y,z);
    }
    else if(type == "scale") {
        glScalef(x, y, z);
@@ -91,30 +101,13 @@ void Transformation::apply(){
        float xx = x/255;
        float yy = y/255;
        float zz = z/255;
-       glColor3f(rx,gy,bz);
+       glColor3f(xx,yy,zz);
    }
 }
-Rotate :: Rotate(){}
-Rotate::Rotate(string t, float a, float xx, float yy, float zz) {
-    angle = a;
-    type = t;   
-    x = xx;
-    y = yy;
-    z = zz;
-}
-//
-float Rotate :: getAngle() {
-    return angle;
-}
-void Rotate::setAngle(float angle) {
-    Rotate::angle = angle;
-}
-//
-void  Rotate::apply() {
-    glRotatef(angle,x,y,z);
-}
 
-Tipo :: Tipo(){}
+
+
+/*Tipo :: Tipo(){}
 Tipo :: Tipo(string ti){
 	tipo = ti;
 }
@@ -133,7 +126,7 @@ void Tipo :: apply(int *linha){
     else if(tipo == "F"){
         *linha=GL_FILL;
     }
-}
+}*/
 //Grupos
 
 Group :: Group(){
@@ -158,6 +151,7 @@ vector<Group*> Group :: getGroups(){
 vector<Transformation*> Group :: getTrans(){
     return trans;
 }
+
 
 vector<Shape*> Group :: getShapes(){
     return shapes;
