@@ -540,6 +540,101 @@ vector<Point> plane(float s) {
     return points;
 }
 
+//draw torus
+
+vector<Point> torus(float radius, float width, int stack, int slice){
+
+	int i, j; //contadores
+	float oy, h = 1.0f / (float) stack;
+	float ang = 0.0f, delt = 2 * M_PI / slice;
+	float or1, or2;
+ 	point p1, p2, p3;
+	vector<Point> points;
+
+	for (i = 0; i < slice; i++){
+
+			oy = -width / 2.0f;
+			h = width / stack;
+
+			for (j = 0; j < stack; j++) {
+
+					or1 = sqrt( (width*width/4.0f) - oy*oy );
+					or2 = sqrt( (width*width/4.0f) - (oy+h)*(oy+h) );
+
+					p1.x = radius * sin(ang)  - or1 * sin(ang);
+					p1.y = oy;
+					p1.z = radius * cos(ang) - or1 * cos(ang);
+
+					p2.x = radius * sin(ang) - or2 * sin(ang);
+					p2.y = oy + h;
+					p2.z = radius * cos(ang) - or2 * cos(ang);
+
+					p3.x = radius * sin(ang + delt) - or1 * sin(ang + delt);
+					p3.y = oy;
+					p3.z = radius * cos(ang + delt) - or1 * cos(ang + delt);
+
+					points.push_back(p1);
+					points.push_back(p2);
+					points.push_back(p3);
+
+					p1.x = radius * sin(ang)  - or2 * sin(ang);
+					p1.y = oy + h;
+					p1.z = radius * cos(ang) - or2 * cos(ang);
+
+					p2.x = radius * sin(ang + delt) - or2 * sin(ang + delt);
+					p2.y = oy + h;
+					p2.z = radius * cos(ang + delt) - or2 * cos(ang + delt);
+
+					p3.x = radius * sin(ang + delt) - or1 * sin(ang + delt);
+					p3.y = oy;
+					p3.z = radius * cos(ang + delt) - or1 * cos(ang + delt);
+
+					points.push_back(p1);
+					points.push_back(p2);
+					points.push_back(p3);
+
+					p1.x = radius * sin(ang)  + or1 * sin(ang);
+					p1.y = oy;
+					p1.z = radius * cos(ang) + or1 * cos(ang);
+
+					p2.x = radius * sin(ang + delt) + or1 * sin(ang + delt);
+					p2.y = oy;
+					p2.z = radius * cos(ang + delt) + or1 * cos(ang + delt );
+
+					p3.x = radius * sin(ang) + or2 * sin(ang);
+					p3.y = oy + h;
+					p3.z = radius * cos(ang) + or2 * cos(ang);
+
+					points.push_back(p1);
+					points.push_back(p2);
+					points.push_back(p3);
+
+					p1.x = radius * sin(ang)  + or2 * sin(ang);
+					p1.y = oy + h;
+					p1.z = radius * cos(ang) + or2 * cos(ang);
+
+					p2.x = radius * sin(ang + delt) + or1 * sin(ang + delt);
+					p2.y = oy;
+					p2.z = radius * cos(ang + delt) + or1 * cos(ang + delt);
+
+					p3.x = radius * sin(ang + delt) + or2 * sin(ang + delt);
+					p3.y = oy + h;
+					p3.z = radius * cos(ang + delt) + or2 * cos(ang + delt);
+
+					points.push_back(p1);
+					points.push_back(p2);
+					points.push_back(p3);
+
+					oy += h;
+			}
+
+			ang += delt;
+
+	}
+
+return points;
+}
+
 
 int main (int argc, char **argv)
 {
@@ -578,6 +673,15 @@ int main (int argc, char **argv)
             int layers = atoi(argv[4]);
             file = argv[5];
             points = sphere(radius, slices, layers);
+    }
+		else if (strcmp("torus",argv[1]) == 0 && argc == 7)
+    {
+            float radius = atof(argv[2]);
+						float width = atof(argv[3]);
+            int slices = atoi(argv[4]);
+            int layers = atoi(argv[5]);
+            file = argv[6];
+            points = torus(radius, width, slices, layers);
     }
     else if (strcmp("plane", argv[1]) == 0 && argc == 4)
     {
