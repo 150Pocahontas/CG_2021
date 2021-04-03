@@ -19,11 +19,17 @@ class Transformations {
   private :
     string type;
     float x, y, z;
+    float angle;
 
   public :
       Transformations();
-      Transformations(string t, float px, float py, float pz);
-      void apply();
+      Transformations(string t, float px, float py, float pz, float a);
+      //void apply();
+      string getType();
+        float getX();
+        float getY();
+        float getZ();
+        float getAngle();
 
 };
 

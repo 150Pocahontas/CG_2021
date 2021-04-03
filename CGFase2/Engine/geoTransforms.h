@@ -12,6 +12,7 @@
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
+#include "Transformations.h"
 
 using namespace std;
 
@@ -23,38 +24,23 @@ typedef struct point{
 
 } Point;
 
-/*
-class Transformation{
-  private :
-  string type;
-//  float angle;
-  float x,y,z;
-
-  public :
-  Transformation();
-  Transformation(string t, float a, float px, float py, float pz);
-  string getType();
-//  float getAngle();
-  float getX();
-  float getY();
-  float getZ();
-}
-*/
 
 class geoTransforms{
 
   private:
 
-
       vector<Point> points;
-    //  vector<Transformation>
+      vector<Transformations*> transformations;
 
   public:
     geoTransforms();
-    geoTransforms(vector<Point> p);
+    geoTransforms(vector<Point> p, vector<Transformations*> t);
       vector<Point> getPoints();
+      vector<Transformations*> getTransformations();
       void addPoint(float x, float y, float z);
+      void addTransformations(string t, float px, float py, float pz, float a);
       void popPoints();
+       void popTransformations();
 };
 
 #endif

@@ -8,7 +8,6 @@ using namespace std;
 using namespace tinyxml2;
 
 geoTransforms obj;
-Transformations transf;
 
 
 int readFile(string filename)
@@ -57,7 +56,7 @@ int readXML(string filename)
     XMLElement *group, *element, *innerElement;
     string fileDir = "../files/" + filename;
     XMLError eResult = doc.LoadFile(fileDir.c_str());
-		float x, y, z;
+		float x, y, z, ang;
 /*
 -scene -> group -> models
                          -> model
@@ -84,7 +83,22 @@ int readXML(string filename)
 									x = element->FloatAttribute("X");
 									y = element->FloatAttribute("Y");
 									z = element->FloatAttribute("Z");
-								transf = Transformations("translate",x,y,z);
+								  obj.addTransformations("translate",x,y,z,0.0f);
+							}
+
+							else if (strcmp(element->Value(), "rotate") == 0) {
+									x = element->FloatAttribute("X");
+									y = element->FloatAttribute("Y");
+									z = element->FloatAttribute("Z");
+									ang = element->FloatAttribute("Angle");
+								obj.addTransformations("rotate",x,y,z,ang);
+							}
+							else if (strcmp(element->Value(), "scale") == 0) {
+
+									x = element->FloatAttribute("X");
+									y = element->FloatAttribute("Y");
+									z = element->FloatAttribute("Z");
+									obj.addTransformations("scale",x,y,z,0.0f);
 							}
 
 							else if (strcmp(element->Value(), "models") == 0){
@@ -99,7 +113,7 @@ int readXML(string filename)
 							}
 						element = element->NextSiblingElement();
 					}
-
+					obj.popTransformations();
 				}
 		}
 	}
@@ -255,16 +269,29 @@ void wirePlane(float n) {
 
 
 void drawAndColor(void) {
-    glBegin(GL_TRIANGLES);
+
 
 		glPushMatrix();
 
-		transf.apply();
+		//transformações
+		for ( Transformations *transf : obj.getTransformations()){
+
+		if (transf->getType() == "rotate") {
+			glRotatef(transf->getAngle(), transf->getX(), transf->getY(), transf->getZ());
+			std::cout << "cona \n";
+		}
+
+		else if (transf->getType() == "translate") glTranslatef(transf->getX(), transf->getY(), transf->getZ());
+
+		else if (transf->getType() == "scale") glScalef(transf->getX(), transf->getY(), transf->getZ());
+
+	}
 
     int i=0;
     bool cor = true;
-
+  glBegin(GL_TRIANGLES);
     for (const Point pt : obj.getPoints())  {
+
         if( i==3 ) {
             cor = !cor;
             i=0;
@@ -279,10 +306,11 @@ void drawAndColor(void) {
         }
         i++;
     }
+    glEnd();
 
 		glPopMatrix();
 
-    glEnd();
+
 }
 
 
