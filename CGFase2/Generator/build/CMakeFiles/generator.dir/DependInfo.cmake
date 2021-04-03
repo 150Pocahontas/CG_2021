@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/patricia/CGFase2/Generator/generator.cpp" "/home/patricia/CGFase2/Generator/build/CMakeFiles/generator.dir/generator.cpp.o"
+  "/home/pawinha/Desktop/CGFase1-master/CGFase1/Generator/generator.cpp" "/home/pawinha/Desktop/CGFase1-master/CGFase1/Generator/build/CMakeFiles/generator.dir/generator.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

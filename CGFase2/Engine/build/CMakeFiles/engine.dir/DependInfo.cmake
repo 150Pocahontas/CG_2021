@@ -4,9 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/patricia/CGFase2/Engine/engine.cpp" "/home/patricia/CGFase2/Engine/build/CMakeFiles/engine.dir/engine.cpp.o"
-  "/home/patricia/CGFase2/Engine/geoTransforms.cpp" "/home/patricia/CGFase2/Engine/build/CMakeFiles/engine.dir/geoTransforms.cpp.o"
-  "/home/patricia/CGFase2/Engine/tinyxml2.cpp" "/home/patricia/CGFase2/Engine/build/CMakeFiles/engine.dir/tinyxml2.cpp.o"
+  "/home/pawinha/Desktop/CGFase2/Engine/Transformations.cpp" "/home/pawinha/Desktop/CGFase2/Engine/build/CMakeFiles/engine.dir/Transformations.cpp.o"
+  "/home/pawinha/Desktop/CGFase2/Engine/engine.cpp" "/home/pawinha/Desktop/CGFase2/Engine/build/CMakeFiles/engine.dir/engine.cpp.o"
+  "/home/pawinha/Desktop/CGFase2/Engine/geoTransforms.cpp" "/home/pawinha/Desktop/CGFase2/Engine/build/CMakeFiles/engine.dir/geoTransforms.cpp.o"
+  "/home/pawinha/Desktop/CGFase2/Engine/tinyxml2.cpp" "/home/pawinha/Desktop/CGFase2/Engine/build/CMakeFiles/engine.dir/tinyxml2.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

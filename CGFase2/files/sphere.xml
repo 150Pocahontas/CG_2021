@@ -1,5 +1,8 @@
 <scene>
-  <models>
-     <model file="../files/sphere.3d"/>
-  </models>
+  <group>
+    <translate X = "5.0f" Y = "5.0f" Z = "5.0f"/>
+    <models>
+      <model file="../files/sphere.3d"/>
+    </models>
+  </group>
 </scene>

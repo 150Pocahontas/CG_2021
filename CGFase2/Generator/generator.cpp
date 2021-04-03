@@ -635,7 +635,6 @@ vector<Point> torus(float radius, float width, int stack, int slice){
 return points;
 }
 
-
 int main (int argc, char **argv)
 {
         if (argc < 2)
@@ -674,21 +673,21 @@ int main (int argc, char **argv)
             file = argv[5];
             points = sphere(radius, slices, layers);
     }
-		else if (strcmp("torus",argv[1]) == 0 && argc == 7)
-    {
-            float radius = atof(argv[2]);
-						float width = atof(argv[3]);
-            int slices = atoi(argv[4]);
-            int layers = atoi(argv[5]);
-            file = argv[6];
-            points = torus(radius, width, slices, layers);
-    }
     else if (strcmp("plane", argv[1]) == 0 && argc == 4)
     {
             float size = atof(argv[2]);
             file = argv[3];
             points = plane(size);
     }
+		else if (strcmp("torus",argv[1]) == 0 && argc == 7)
+	{
+					float radius = atof(argv[2]);
+					float width = atof(argv[3]);
+					int stack = atoi(argv[4]);
+					int slice = atoi(argv[5]);
+					file = argv[6];
+					points = torus(radius, width, stack, slice);
+	}
    else {
         printf("Invalid input!\n");
         return -1;

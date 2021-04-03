@@ -1,9 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/engine.cpp.o"
-  "CMakeFiles/engine.dir/geoTransforms.cpp.o"
   "CMakeFiles/engine.dir/tinyxml2.cpp.o"
-  "engine"
+  "CMakeFiles/engine.dir/geoTransforms.cpp.o"
+  "CMakeFiles/engine.dir/Transformations.cpp.o"
   "engine.pdb"
+  "engine"
 )
 
 # Per-language clean rules from dependency scanning.
