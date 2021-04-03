@@ -248,7 +248,6 @@ void drawAndColor(void) {
     glEnd();
 }
 
-
 void renderScene(void)
 {
 
@@ -269,6 +268,8 @@ void renderScene(void)
 
     //set primitives and colors
     drawAndColor();
+
+
 
 
     // End of frame
