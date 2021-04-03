@@ -1,1 +1,0 @@
-/usr/bin/c++   Wno-deprecated   CMakeFiles/engine.dir/engine.cpp.o CMakeFiles/engine.dir/tinyxml2.cpp.o CMakeFiles/engine.dir/geoTransforms.cpp.o CMakeFiles/engine.dir/Transformations.cpp.o  -o engine /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/x86_64-linux-gnu/libglut.so 

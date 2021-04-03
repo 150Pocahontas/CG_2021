@@ -1,3 +1,0 @@
-/home/pawinha/Desktop/CGFase2/Engine/build/CMakeFiles/rebuild_cache.dir
-/home/pawinha/Desktop/CGFase2/Engine/build/CMakeFiles/engine.dir
-/home/pawinha/Desktop/CGFase2/Engine/build/CMakeFiles/edit_cache.dir

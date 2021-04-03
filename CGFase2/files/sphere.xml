@@ -1,8 +1,0 @@
-<scene>
-  <group>
-    <rotate Angle = "123.0f" X = "1.0f" Y = "0.0f" Z = "1.0f" />
-    <models>
-      <model file="../files/sphere.3d"/>
-    </models>
-  </group>
-</scene>
