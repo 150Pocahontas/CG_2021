@@ -1,19 +1,13 @@
 #include <stdlib.h>
 #include "tinyxml2.h"
 #include "engine.h"
-#include "object3d.h"
-#include <stdio.h>
 
 using namespace std;
 using namespace tinyxml2;
 
-Object3d obj;
-int drawMode = GL_FILL;
-
-
 int readFile(string filename)
 {
-	float x, y, z;
+	Point p;
 	string line, token;
 	ifstream file(filename);
 	int i;
@@ -34,63 +28,53 @@ int readFile(string filename)
 				while (getline(ss, token, ','))
 				{
 					if (i == 0)
-						x = stof(token);
+						p.x = stof(token);
 					else if (i == 1)
-						y = stof(token);
+						p.y = stof(token);
 					else
-						z = stof(token);
+						p.z = stof(token);
 					i++;
 				}
-				obj.addPoint(x, y, z);
+				points.push_back(p);
 			}
 		}
-		obj.popPoints();
+		points.pop_back();
 		file.close();
 	}
 	return 0;
 }
 
-
 int readXML(string filename)
 {
 	XMLDocument doc;
     XMLNode *pRoot;
-    XMLElement *group, *element, *innerElement;
+    XMLElement *element, *listElement;
     string fileDir = "../files/" + filename;
     XMLError eResult = doc.LoadFile(fileDir.c_str());
 
     if (eResult == XML_SUCCESS)
     {
-			pRoot = doc.FirstChild();
-			std::cout << "pRoot : " << pRoot->Value() << '\n';
-			if (pRoot != nullptr)
-			{
-					group = pRoot->FirstChildElement();
-					std::cout << "group : " << group->Value() << '\n';
+        pRoot = doc.FirstChild();
+        if (pRoot != nullptr)
+        {
+            element = pRoot->FirstChildElement("models");
 
-					if (group != nullptr)
-					{
-							element = group->FirstChildElement();
-							std::cout << "element : " << element->Value() << '\n';
+            if (element != nullptr)
+            {
+                listElement = element->FirstChildElement("model");
 
-							if (element != nullptr)
-							{
-								innerElement = element->FirstChildElement();
-								std::cout << "innerElement : " << innerElement->Value() << '\n';
+                while (listElement != nullptr)
+                {
+                    string file;
+                    file = listElement->Attribute("file");
 
-								while (innerElement != nullptr)
-								{
-									string file;
-									file = innerElement->Attribute("file");
+                    if (!file.empty() && readFile(file) == -1)
+                        return -1;
 
-									if (!file.empty() && readFile(file) == -1)
-											return -1;
-
-									innerElement = innerElement->NextSiblingElement("model");
-								}
-						}
-					}
-			}
+                    listElement = listElement->NextSiblingElement("model");
+                }
+            }
+        }
     }
     else
     {
@@ -124,18 +108,18 @@ switch (k){
      //draw mode
      //points
 	case 'p':
-            drawMode= GL_POINT;
+            line = GL_POINT;
             glutPostRedisplay();
             break;
     //lines
     case 'l':
-            drawMode = GL_LINE;
+            line = GL_LINE;
             glutPostRedisplay();
             break;
 
     //full
     case 'f':
-            drawMode = GL_FILL;
+            line = GL_FILL;
             glutPostRedisplay();
             break;
     default:
@@ -189,6 +173,20 @@ void wirePlane(float n) {
     glVertex3f(0.0f, 0.0f, 0.0f);
     glVertex3f(-2.0f * n, 0.0f, 0.0f);
 
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    glVertex3f(2.0f * n, 0.0f, 1.0f * n);
+    glVertex3f(-2.0f * n, 0.0f, 1.0f * n);
+
+    glVertex3f(2.0f * n, 0.0f, -1.0f * n);
+    glVertex3f(-2.0f * n, 0.0f, -1.0f * n);
+
+    glVertex3f(2.0f * n, 0.0f, 2.0f * n);
+    glVertex3f(-2.0f * n, 0.0f, 2.0f * n);
+
+    glVertex3f(2.0f * n, 0.0f, -2.0f * n);
+    glVertex3f(-2.0f * n, 0.0f, -2.0f * n);
+
     glColor3f(0.0f, 0.0f, 1.0f);
 
     glVertex3f(0.0f, 0.0f, 2.0f * n);
@@ -199,15 +197,29 @@ void wirePlane(float n) {
     glVertex3f(0.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, -2.0f * n);
 
-		glColor3f(0.0f, 1.0f, 0.0f);
+    glColor3f(1.0f, 1.0f, 1.0f);
 
-		glVertex3f(0.0f, 2.0f * n, 0.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(1.0f * n, 0.0f, 2.0f * n);
+    glVertex3f(1.0f * n, 0.0f, -2.0f * n);
 
-		glColor3f(0.0f, 0.5f, 0.0f);
+    glVertex3f(-1.0f * n, 0.0f, 2.0f * n);
+    glVertex3f(-1.0f * n, 0.0f, -2.0f * n);
 
-		glVertex3f(0.0f, 0.0f * n, 0.0f);
-		glVertex3f(0.0f, -2.0f * n, 0.0f);
+    glVertex3f(2.0f * n, 0.0f, 2.0f * n);
+    glVertex3f(2.0f * n, 0.0f, -2.0f * n);
+
+    glVertex3f(-2.0f * n, 0.0f, 2.0f * n);
+    glVertex3f(-2.0f * n, 0.0f, -2.0f * n);
+
+    glColor3f(0.0f, 1.0f, 0.0f);
+
+    glVertex3f(0.0f, 2.0f * n, 0.0f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+
+    glColor3f(0.0f, 0.5f, 0.0f);
+
+    glVertex3f(0.0f, 0.0f * n, 0.0f);
+    glVertex3f(0.0f, -2.0f * n, 0.0f);
 
     glEnd();
 }
@@ -218,7 +230,7 @@ void drawAndColor(void) {
     int i=0;
     bool cor = true;
 
-    for (const Point pt : obj.getPoints())  {
+    for (const Point pt : points)  {
         if( i==3 ) {
             cor = !cor;
             i=0;
@@ -236,6 +248,7 @@ void drawAndColor(void) {
     glEnd();
 }
 
+
 void renderScene(void)
 {
 
@@ -249,15 +262,13 @@ void renderScene(void)
               0.0, 0.0, 0.0,
               0.0f, 1.0f, 0.0f);
 
-    glPolygonMode(GL_FRONT_AND_BACK, drawMode);
+    glPolygonMode(GL_FRONT_AND_BACK, line);
 
     //axes
     wirePlane(2.0f);
 
     //set primitives and colors
     drawAndColor();
-
-
 
 
     // End of frame
