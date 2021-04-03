@@ -1,0 +1,39 @@
+<scene>
+
+  <sun>
+     <model file="../files/sphere.3d"/>
+  </sun>
+
+  <mercury>
+     <model file="../files/sphere.3d"/>
+  </mercury>
+
+  <venus>
+     <model file="../files/sphere.3d"/>
+  </venus>
+
+  <earth>
+     <model file="../files/sphere.3d"/>
+  </earth>
+
+  <mars>
+     <model file="../files/sphere.3d"/>
+  </mars>
+
+  <jupiter>
+     <model file="../files/sphere.3d"/>
+  </jupiter>
+
+  <saturn>
+     <model file="../files/sphere.3d"/>
+  </saturn>
+
+  <uranus>
+     <model file="../files/sphere.3d"/>
+  </uranos>
+
+  <neptune>
+     <model file="../files/sphere.3d"/>
+  </neptune>
+
+</scene>
