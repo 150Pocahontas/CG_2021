@@ -1,2 +1,2 @@
 # CG
-atom://teletype/portal/36f2dbdc-acca-400b-ad34-7b8ea90b49c5
+atom://teletype/portal/cc3e2b73-9728-4af9-9eeb-9e5eb0843b8b
