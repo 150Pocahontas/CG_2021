@@ -8,6 +8,7 @@
         <model file="../files/sphere.3d"/>
       </models>
     </group>
+
     <!--Mercury -->
     <group>
       <scale  X = "0.24f" Y = "0.24f" Z = "0.24f"/>
@@ -17,6 +18,7 @@
         <model file="../files/sphere.3d"/>
       </models>
     </group>
+
     <!--Venus-->
     <group>
       <scale  X = "0.6f" Y = "0.6f" Z = "0.6f"/>
@@ -44,8 +46,8 @@
           <model file="../files/sphere.3d"/>
         </models>
       </group>
-
     </group>
+
     <!--Marte -->
     <group>
       <scale  X = "0.34f" Y = "0.35f" Z = "0.35f"/>
@@ -55,9 +57,38 @@
         <model file="../files/sphere.3d"/>
       </models>
     </group>
+
+    <!--Jupiter-->
+    <group>
+      <scale X="1.7f" Y = "1.7f" Z="1.7f"/>
+      <translate X = "100.0f" Z = "10.0f"/>
+      <models>
+        <color R1 = "0.766f" G1 = "0.592f" B1 = "0.474f" R2 = "0.945f" G2 = "0.819f" B2 = "0.717f"/>
+        <model file="../files/sphere.3d"/>
+      </models>
+      <!--Ganimedes-->
+      <group>
+        <scale X = "0.35f" Y = "0.35f" Z = "0.35f"/>
+        <translate X = "11.0f" Y = "12.0f" Z = "13.0f"/>
+        <models>
+         <color R1 = "0.66f" G1 = "0.66f" B1 = "0.66f" R2 = "0.5f" G2 = "0.5f" B2 = "0.5f"/>
+         <model file="../files/sphere.3d"/>
+        </models>
+      </group>
+      <!--Calisto-->
+      <group>
+        <scale X = "0.2f" Y = "0.2f" Z = "0.2f"/>
+        <translate X = "-15.0f" Y = "15.0f" Z = "15.0f"/>
+        <models>
+         <color R1 = "0.5f" G1 = "0.5f" B1 = "0.5f" R2 = "0.3f" G2 = "0.3f" B2 = "0.3f"/>
+         <model file="../files/sphere.3d"/>
+        </models>
+      </group>
+    </group>
+
     <!--Saturno-->
   <group>
-    <scale X = "1.2f" Y = "1.2f" Z = "1.2f"/>
+    <scale X = "1.4f" Y = "1.4f" Z = "1.4f"/>
     <translate X = "120.0f" Z = "-20.0f"/>
     <models>
       <color R1 = "0.831f" G1 = "0.764f" B1 = "0.662f" R2 = "0.513f" G2 = "0.509f" B2 = "0.431f"/>
@@ -66,7 +97,7 @@
      <!--Ring-->
     <group>
       <rotate Angle = "10.0f" X = "1.0f"/>
-      <scale X = "3.0f" Y = "0.1f" Z = "3.0f"/>
+      <scale X = "2.0f" Y = "0.1f" Z = "2.0f"/>
       <models>
         <color R1 = "0.494f" G1 = "0.470f" B1 = "0.4f" R2 = "0.137f" G2 = "0.121f" B2 = "0.113f"/>
         <model file="../files/torus.3d"/>
@@ -82,6 +113,7 @@
       </models>
     </group>
   </group>
+
   <!--Uranus-->
   <group>
     <scale X = "0.9f" Y = "0.9f" Z = "0.9f"/>
@@ -93,13 +125,14 @@
     <!--Ring-->
     <group>
       <rotate Angle = "55.0f" X = "1.0f" Y = "1.0f"/>
-      <scale X = "3.0f" Y = "0.1f" Z = "3.0f"/>
+      <scale X = "1.2f" Y = "0.1f" Z = "1.2f"/>
       <models>
         <color R1 = "0.274f" G1 = "0.850f" B1 = "0.878f" R2 = "0f" G2 = "0.509f" B2 = "0.843f"/>
         <model file="../files/torus.3d"/>
       </models>
     </group>
   </group>
+
   <!--Neptune-->
   <group>
     <scale X = "0.8f" Y = "0.8f" Z = "0.8f"/>
@@ -109,31 +142,15 @@
       <model file="../files/sphere.3d"/>
     </models>
   </group>
-  <!--Jupiter-->
+
+  <!--pluto-->
   <group>
-    <scale X="1.5f" Y = "1.5f" Z="1.5f"/>
-    <translate X = "100.0f" Z = "10.0f"/>
+    <scale X = "0.1f" Y = "0.1f" Z = "0.1f"/>
+    <translate X = "205.0f" Z = "50.0f"/>
     <models>
-      <color R1 = "0.82f" G1 = "0.71f" B1 = "0.55f" R2 = "0.82f" G2 = "0.71f" B2 = "0.55f"/>
+      <color R1 = "0.1f" G1 = "0.1f" B1 = "0.2f" R2 = "0.2f" G2 = "0.2f" B2 = "0.3f"/>
       <model file="../files/sphere.3d"/>
     </models>
-    <!--Ganimedes-->
-    <group>
-      <scale X = "0.35f" Y = "0.35f" Z = "0.35f"/>
-      <translate X = "11.0f" Y = "12.0f" Z = "13.0f"/>
-      <models>
-       <color R1 = "0.66f" G1 = "0.66f" B1 = "0.66f" R2 = "0.66f" G2 = "0.66f" B2 = "0.66f"/>
-       <model file="../files/sphere.3d"/>
-      </models>
-    </group>
-    <!--Calisto-->
-    <group>
-      <scale X = "0.2f" Y = "0.2f" Z = "0.2f"/>
-      <translate X = "-15.0f" Y = "15.0f" Z = "15.0f"/>
-      <models>
-       <color R1 = "0.5f" G1 = "0.5f" B1 = "0.5f" R2 = "0.5f" G2 = "0.5f" B2 = "0.5f"/>
-       <model file="../files/sphere.3d"/>
-      </models>
-    </group>
   </group>
+
 </scene>
