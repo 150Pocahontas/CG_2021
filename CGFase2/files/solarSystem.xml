@@ -1,0 +1,122 @@
+<scene>
+
+    <!--Sol -->
+    <group>
+      <scale  X = "3.6f" Y="3.6f" Z = "3.6f" />
+      <models>
+        <color R1 = "1.0f" G1 = "1.0f" B1 = "0.0f" R2 = "1.0f" G2 = "0.8f" B2 = "0.0f" />
+        <model file="../files/sphere.3d"/>
+      </models>
+    </group>
+    <!--Mercury -->
+    <group>
+      <scale  X = "0.24f" Y = "0.24f" Z = "0.24f"/>
+      <translate X = "-10.0f" Z = "20.0f"/>
+      <models>
+        <color R1 = "0.435f" G1 = "0.431f" B1 = "0.443f" R2 = "0.549f" G2 = "0.549f" B2 = "0.576f"/>
+        <model file="../files/sphere.3d"/>
+      </models>
+    </group>
+    <!--Venus-->
+    <group>
+      <scale  X = "0.6f" Y = "0.6f" Z = "0.6f"/>
+      <translate X = "30.0f"/>
+      <models>
+        <color R1 = "0.784f" G1 = "0.764f" B1 = "0.749f" R2 = "0.827f" G2 = "0.819f" B2 = "0.811f"/>
+        <model file="../files/sphere.3d"/>
+      </models>
+    </group>
+
+    <!--Terra-->
+    <group>
+      <scale  X = "0.6f" Y = "0.6f" Z = "0.6f"/>
+      <translate  X = "-40.0f"  Z = "10.0f" />
+      <models>
+        <color R1 = "0.3f" G1 = "1.0f" B1 = "0.0f" R2 = "0.0f" G2 = "0.3f" B2 = "9.0f" />
+        <model file="../files/sphere.3d"/>
+      </models>
+      <!--Lua-->
+      <group>
+        <scale  X = "0.3f" Y="0.3f" Z = "0.3f" />
+        <translate X = "13.0f" Y = "10.0f" Z = "13.0f"/>
+        <models>
+          <color  R1 = "1.0f" G1 = "1.0f" B1 = "1.0f" R2 = "0.5f" G2 = "0.5f" B2 = "0.6f" />
+          <model file="../files/sphere.3d"/>
+        </models>
+      </group>
+
+    </group>
+    <!--Marte -->
+    <group>
+      <scale  X = "0.34f" Y = "0.35f" Z = "0.35f"/>
+      <translate X = "55.0f" Z = "10.0f"/>
+      <models>
+        <color R1 = "0.952f" G1 = "0.564f" B1 = "0.411f" R2 = "0.647f" G2 = "0.403f" B2 = "0.403f"/>
+        <model file="../files/sphere.3d"/>
+      </models>
+    </group>
+    <!--Jupiter-->
+    <group>
+      <scale  X = "1.5f" Y = "1.5f" Z = "1.5f"/>
+      <translate X = "100.0f" Z = "10.0f"/>
+      <models>
+        <color R1 = "0.980f" G1 = "0.682f" B1 = "0.490f" R2 = "0.988f" G2 = "0.925f" B2 = "0.874f"/>
+        <model file="../files/sphere.3d"/>
+      </models>
+      <!--Calisto-->
+      <group>
+        <scale X = "0.2f" Y = "0.2f" Z = "0.2f"/>
+        <translate X = "-15.0f" Z = "15.0f" Z = "15.0f"/>
+        <models>
+         <color R1 = "0.682f" G1 = "0.603f" B1 = "0.643f" R2 = "0.215f" G2 = "0.203f" B2 = "0.262f"/>
+         <model file="../files/sphere.3d"/>
+        </models>
+      </group>
+    </group>
+    <!--Saturno-->
+  <group>
+    <scale X = "1.2f" Y = "1.2f" Z = "1.2f"/>
+    <translate X = "120.0f" Z = "-20.0f"/>
+    <models>
+      <color R1 = "0.831f" G1 = "0.764f" B1 = "0.662f" R2 = "0.513f" G2 = "0.509f" B2 = "0.431f"/>
+      <model file="../files/sphere.3d"/>
+    </models>
+     <!--Ring-->
+    <group>
+      <rotate Angle = "90.0f" X = "1.0f"/>
+      <scale X = "2.0f" Y = "2.0f" Z = "0.0f"/>
+      <models>
+        <color R1 = "0.494f" G1 = "0.470f" B1 = "0.4f" R2 = "0.137f" G2 = "0.121f" B2 = "0.113f"/>
+        <model file="../files/torus.3d"/>
+      </models>
+    </group>
+  </group>
+  <!--Uranus-->
+  <group>
+    <scale X = "0.9f" Y = "0.9f" Z = "0.9f"/>
+    <translate X = "135.0f" Z = "50.0f"/>
+    <models>
+      <color R1 = "0.274f" G1 = "0.850f" B1 = "0.878f" R2 = "0f" G2 = "0.509f" B2 = "0.843f"/>
+      <model file="../files/sphere.3d"/>
+    </models>
+    <!--Ring-->
+    <group>
+      <rotate Angle = "55.0f" X = "1.0f" Y = "1.0f"/>
+      <scale X = "3.0f" Y = "0.5f" Z = "0.0f"/>
+      <models>
+        <color R1 = "0.274f" G1 = "0.850f" B1 = "0.878f" R2 = "0f" G2 = "0.509f" B2 = "0.843f"/>
+        <model file="../files/torus.3d"/>
+      </models>
+    </group>
+  </group>
+  <!--Neptune-->
+  <group>
+    <scale X = "0.8f" Y = "0.8f" Z = "0.8f"/>
+    <translate X = "165.0f" Z = "15.0f"/>
+    <models>
+      <color R1 = "0.274f" G1 = "0.850f" B1 = "0.878f" R2 = "0f" G2 = "0.509f" B2 = "0.843f"/>
+      <model file="../files/sphere.3d"/>
+    </models>
+  </group>
+
+</scene>
