@@ -55,24 +55,6 @@
         <model file="../files/sphere.3d"/>
       </models>
     </group>
-    <!--Jupiter-->
-    <group>
-      <scale  X = "1.5f" Y = "1.5f" Z = "1.5f"/>
-      <translate X = "100.0f" Z = "10.0f"/>
-      <models>
-        <color R1 = "0.980f" G1 = "0.682f" B1 = "0.490f" R2 = "0.988f" G2 = "0.925f" B2 = "0.874f"/>
-        <model file="../files/sphere.3d"/>
-      </models>
-      <!--Calisto-->
-      <group>
-        <scale X = "0.2f" Y = "0.2f" Z = "0.2f"/>
-        <translate X = "-15.0f" Z = "15.0f" Z = "15.0f"/>
-        <models>
-         <color R1 = "0.682f" G1 = "0.603f" B1 = "0.643f" R2 = "0.215f" G2 = "0.203f" B2 = "0.262f"/>
-         <model file="../files/sphere.3d"/>
-        </models>
-      </group>
-    </group>
     <!--Saturno-->
   <group>
     <scale X = "1.2f" Y = "1.2f" Z = "1.2f"/>
@@ -83,8 +65,8 @@
     </models>
      <!--Ring-->
     <group>
-      <rotate Angle = "90.0f" X = "1.0f"/>
-      <scale X = "2.0f" Y = "2.0f" Z = "0.0f"/>
+      <rotate Angle = "10.0f" X = "1.0f"/>
+      <scale X = "3.0f" Y = "0.1f" Z = "3.0f"/>
       <models>
         <color R1 = "0.494f" G1 = "0.470f" B1 = "0.4f" R2 = "0.137f" G2 = "0.121f" B2 = "0.113f"/>
         <model file="../files/torus.3d"/>
@@ -102,7 +84,7 @@
     <!--Ring-->
     <group>
       <rotate Angle = "55.0f" X = "1.0f" Y = "1.0f"/>
-      <scale X = "3.0f" Y = "0.5f" Z = "0.0f"/>
+      <scale X = "3.0f" Y = "0.1f" Z = "3.0f"/>
       <models>
         <color R1 = "0.274f" G1 = "0.850f" B1 = "0.878f" R2 = "0f" G2 = "0.509f" B2 = "0.843f"/>
         <model file="../files/torus.3d"/>
