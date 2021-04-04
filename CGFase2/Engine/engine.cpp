@@ -376,6 +376,60 @@ void changeSize(int w, int h)
     glMatrixMode(GL_MODELVIEW);
 }
 
+//Engine Guide
+void mouvementguide(){
+    std::cout << "                            || GUIDE ||                               " << std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "                 GUIDELINE: ./engine <XML FILE>                       " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "                               FILE:                                  " <<std::endl;
+    std::cout << "  Specify the path to a XML file in which the information about the   " <<std::endl;
+    std::cout << "              models you wish to create are specified.                " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "                               CAMERA:                                " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "- RIGHT_ARROW_KEY :                                                   " <<std::endl;
+    std::cout << "             Rotate the camera to right                               " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "- LEFT_ARROW_KEY :                                                    " <<std::endl;
+    std::cout << "             Rotate the camera to left                                " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "- DOWN_ARROW_KEY :                                                    " <<std::endl;
+    std::cout << "             Rotate the camera up ( Y Axe - Positive Direction )      " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "- UP_ARROW_KEY :                                                      " <<std::endl;
+    std::cout << "             Rotate the camera down ( Y Axe - Negative Direction)     " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+		std::cout << "                               MOVEMENT:                              " <<std::endl;
+		std::cout << "                                                                      " <<std::endl;
+		std::cout << "- W :                                                                 " <<std::endl;
+		std::cout << "             Move forwards                                            " <<std::endl;
+		std::cout << "                                                                      " <<std::endl;
+		std::cout << "- S :                                                                 " <<std::endl;
+		std::cout << "             Move backwards                                           " <<std::endl;
+		std::cout << "                                                                      " <<std::endl;
+		std::cout << "- D :                                                                 " <<std::endl;
+		std::cout << "             Move to the right                                        " <<std::endl;
+		std::cout << "                                                                      " <<std::endl;
+		std::cout << "- A :                                                                 " <<std::endl;
+		std::cout << "             Move to the left                                         " <<std::endl;
+		std::cout << "                                                                      " <<std::endl;
+		std::cout << "- E :                                                                 " <<std::endl;
+		std::cout << "             Move Up                                                  " <<std::endl;
+		std::cout << "                                                                      " <<std::endl;
+		std::cout << "- Q :                                                                 " <<std::endl;
+		std::cout << "             Move Down                                                " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "                              FORMAT:                                 " <<std::endl;
+    std::cout << "- l :                                                                 " <<std::endl;
+    std::cout << "     Figure format into lines                                         " <<std::endl;
+    std::cout << "- p :                                                                 " <<std::endl;
+    std::cout << "     Figure format into points                                        " <<std::endl;
+    std::cout << "- f :                                                                 " <<std::endl;
+    std::cout << "     Fill up the figure                                               " <<std::endl;
+    std::cout << "                                                                      " <<std::endl;
+    std::cout << "                              || END ||                               " <<std::endl;
+}
 
 int main(int argc, char **argv)
 {
@@ -389,6 +443,10 @@ int main(int argc, char **argv)
 		cout << "Invalid input." << endl;
 		return 0;
 	}
+	else if(!strcmp(argv[1],"-g")){
+						mouvementguide();
+						return 0;
+				}
 
 	else if (readXML(argv[1]) == 0) {
 		// put callback registration here
