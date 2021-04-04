@@ -165,12 +165,6 @@ int readXML(string filename)
 //função responsável pelos inputs de caracteres do teclado (afeta o movimento da camera e o draw mode)
 void keyboard (unsigned char k, int i, int j){
 switch (k){
-		//reset
-        case 'r':
-                alpha = 0.7f;
-                beta = 0.3f;
-                glutPostRedisplay();
-                break;
 
 	case 'w':
 				    movX += sin(alpha);
