@@ -1,0 +1,3 @@
+/home/patricia/fase4/Engine/build/CMakeFiles/rebuild_cache.dir
+/home/patricia/fase4/Engine/build/CMakeFiles/edit_cache.dir
+/home/patricia/fase4/Engine/build/CMakeFiles/engine.dir

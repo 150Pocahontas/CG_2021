@@ -1,0 +1,4 @@
+g++ engine.cpp tinyxml2.cpp geoTransforms.cpp Transformations.cpp Shape.cpp Point.cpp Light.cpp Texture.cpp Scene.cpp -o engine -lGLEW -lGL -lGLU -lglut -lIL
+
+
+g++ generator.cpp -o generator -lGLEW -lGL -lGLU -lglut
