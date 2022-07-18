@@ -1,3 +1,4 @@
 # Computação Gráfica 2021
-c++ Language
-<br />Representation of Solar System
+Language: cpp
+<br />Representation of a Solar System
+
